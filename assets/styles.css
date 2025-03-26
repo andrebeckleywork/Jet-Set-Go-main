@@ -1,0 +1,1362 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+/* ================== */
+/* Google Fonts */
+/* ================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* =============== */
+/* CSS Reset */
+/* =============== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+/* =================== */
+/* CSS Variables */
+/* =================== */
+:root {
+  /* Font families */
+  --font-primary: "Poppins", serif;
+  --font-secondary: "Roboto", serif;
+
+  /* Flights */
+  --flights-primary: #0052b5;
+  --flights-secondary: #5997e0;
+
+  /* Stays */
+  --stays-primary: #63411c;
+  --stays-secondary: #a05000;
+
+  /* Car rentals */
+  --cars-primary: #1d2836;
+  --cars-secondary: #273545;
+
+  /* Attractions */
+  --attractions-primary: #4c6c0b;
+  --attractions-secondary: #5c8900;
+
+  /* Basics */
+  --color-white: #fff;
+  --color-black: #101010;
+  --color-dark-1: #10141b;
+  --color-dark-2: #202d3d;
+  --color-brown: #543d25;
+  --color-gray: #c4c4c4;
+  --color-gray-light: #f5f5f5;
+  --color-gray-dark: #9d9d9d;
+  --color-gray-dark-2: #787878;
+  --color-highlight: #ffa200;
+  --color-flights-highlight: #ffa200;
+  --color-hightlight-transparent: rgba(255, 162, 0, 0.7);
+  --color-gray-transparent: rgba(245, 245, 245, 0.25);
+  --color-dark-transparent: rgba(32, 45, 61, 0.5);
+  --color-warning: #ff4500;
+  --color-green: #19bf00;
+  --color-red: #ff0000;
+  --color-red-light: #fb4e4e;
+  --color-blue-light: #73a6e1;
+
+  --border-rounded: 50%;
+
+  --darkening-bg-image: linear-gradient(
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15)
+  );
+  --darkening-bg-image-2: linear-gradient(
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.45)
+  );
+
+  --box-shadow-dark: 0px 9px 6px -4px rgb(70, 70, 70);
+  --box-shadow-light: 0px 2px 8px 1px rgb(175, 175, 175);
+}
+
+/* ============== */
+/* CSS Base */
+/* ============== */
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-gray-light);
+  font-family: var(--font-secondary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+}
+
+/* ================ */
+/* Scroll Bar */
+/* ================ */
+::-webkit-scrollbar {
+  -webkit-box-shadow: inset 0 0 5px var(--flights-secondary);
+  box-shadow: inset 0 0 5px var(--flights-secondary);
+  border-radius: 10px;
+  width: 0.6rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--flights-secondary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue-light);
+}
+
+/* ===================== */
+/* Utility classes */
+/* ===================== */
+.highlight {
+  color: var(--color-highlight);
+}
+
+.section {
+  margin-top: 6rem;
+}
+
+.no-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* The code for the spinner was taken from this W3C article and slightly modified: https://www.w3schools.com/howto/howto_css_loader.asp */
+.loader {
+  border: 0.5rem solid var(--color-gray-light);
+  border-top: 0.5rem solid var(--flights-secondary);
+  border-radius: var(--border-rounded);
+  width: 3rem;
+  height: 3rem;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+#flights-results-header .loader {
+  border: 1rem solid var(--color-gray-light);
+  border-top: 1rem solid var(--flights-secondary);
+  border-radius: var(--border-rounded);
+  width: 6rem;
+  height: 6rem;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* ============= */
+/* Overlay */
+/* ============= */
+.overlay {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100vh;
+  background-color: var(--color-dark-transparent);
+  -webkit-transform: translate(-100%);
+  -ms-transform: translate(-100%);
+  transform: translate(-100%);
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.overlay.overlay-visible {
+  -webkit-transform: translate(0);
+  -ms-transform: translate(0);
+  transform: translate(0);
+  z-index: 2;
+}
+
+/* ============================== */
+/* Tippy Box Custom Styling */
+/* ============================== */
+
+/* The code for the tippy box was taken from https://atomiks.github.io/tippyjs/ */
+.tippy-box {
+  -webkit-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+/* Create custome styles for the tippy box */
+.tippy-box[data-theme~="warning"] {
+  background-color: var(--color-warning);
+  color: var(--color-white);
+  padding: 0 0.5rem 0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  -webkit-box-shadow: var(--box-shadow-dark);
+  box-shadow: var(--box-shadow-dark);
+}
+
+/* Create the fade custom animation for tippy box */
+.tippy-box[data-animation="fade-custom"][data-state="hidden"] {
+  opacity: 0;
+  -webkit-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  transform: translateY(10px);
+}
+.tippy-box[data-animation="fade-custom"][data-state="visible"] {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+/* Style the arrow */
+.tippy-box[data-theme~="warning"] .tippy-arrow {
+  border-color: var(--color-warning);
+  border-width: 5px;
+}
+
+.tippy-box[data-theme~="warning"] .tippy-arrow::before {
+  border-top-color: var(--color-warning); /* Set the arrow's color */
+}
+
+/* ======================== */
+/* Sidebar Navigation */
+/* ======================== */
+.sidebar-navigation {
+  min-height: 100vh;
+  background-color: var(--flights-primary);
+  -webkit-transform: translate(-100%);
+  -ms-transform: translate(-100%);
+  transform: translate(-100%);
+  -webkit-transition: -webkit-transform 0.5s ease-out;
+  transition: -webkit-transform 0.5s ease-out;
+  -o-transition: transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+  transition: transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+.sidebar-navigation.sidebar-navigation-visible {
+  -webkit-transform: translate(0);
+  -ms-transform: translate(0);
+  transform: translate(0);
+}
+
+.sidebar-navigation ul a:visited,
+.sidebar-navigation ul a:link {
+  gap: 1.6rem;
+  color: var(--color-white);
+}
+
+.sidebar-navigation ul a:hover,
+.sidebar-navigation ul a:active {
+  background-color: var(--flights-secondary);
+}
+
+.sidebar-navigation ul a i {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 1rem;
+  flex: 0 0 1rem;
+}
+
+.sidebar-navigation-scrolling {
+  background-color: var(--color-gray-light);
+  color: var(--flights-primary);
+}
+
+/* =================================================================== */
+/* index.html styling (Flight Tickets Search) */
+/* =================================================================== */
+
+/* ============ */
+/* Header */
+/* ============ */
+header #nav {
+  -webkit-transition: background-color 0.25s ease-in-out;
+  -o-transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
+}
+
+header #nav.navigation-highlight {
+  background-color: var(--flights-primary);
+}
+
+/* Set the size for the logo container */
+header #nav .logo-container {
+  max-width: 16rem;
+}
+
+header #nav .hamburger-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+header #nav .hamburger-btn {
+  -webkit-transition: background-color 0.25s linear;
+  -o-transition: background-color 0.25s linear;
+  transition: background-color 0.25s linear;
+}
+
+header #nav .hamburger-btn:hover {
+  background-color: var(--flights-primary);
+}
+
+header #nav .left-navigation {
+  gap: 1rem;
+}
+
+header #nav .right-navigation ul {
+  gap: 1rem;
+}
+
+header #nav .right-navigation li i {
+  -webkit-transition: color 0.25s linear;
+  -o-transition: color 0.25s linear;
+  transition: color 0.25s linear;
+}
+
+header #nav .right-navigation li i:hover {
+  color: var(--color-highlight);
+}
+
+/* Style the flights search header */
+#flights-header {
+  background-image: url("../assets/images/background-image-flights-large.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+#flights-header .header-main-content {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 100%;
+  flex: 1 0 100%;
+}
+
+#flights-header .header-main-content-nav a {
+  background-color: var(--color-gray-transparent);
+  color: var(--color-white);
+  letter-spacing: 1.1px;
+}
+
+/* Style each header main navigation links according to each feature color palette */
+#flights-header .header-main-content-nav .flights-link.active,
+#flights-header .header-main-content-nav .flights-link:hover {
+  background-color: var(--color-white);
+  color: var(--color-flights-highlight);
+}
+#flights-header .header-main-content-nav .stays-link.active,
+#flights-header .header-main-content-nav .stays-link:hover {
+  background-color: var(--color-white);
+  color: var(--stays-secondary);
+}
+#flights-header .header-main-content-nav .cars-link.active,
+#flights-header .header-main-content-nav .cars-link:hover {
+  background-color: var(--color-white);
+  color: var(--cars-secondary);
+}
+#flights-header .header-main-content-nav .attractions-link.active,
+#flights-header .header-main-content-nav .attractions-link:hover {
+  background-color: var(--color-white);
+  color: var(--attractions-secondary);
+}
+
+#flights-header #flights-search-form .dropdown-inputs-container {
+  gap: 0.8rem;
+}
+
+#flights-header #flights-search-form .persons-selection,
+#flights-header #flights-search-form .flight-class-selection {
+  background-color: var(--color-white);
+  -webkit-box-shadow: var(--box-shadow-dark);
+  box-shadow: var(--box-shadow-dark);
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(10%);
+  -ms-transform: translateY(10%);
+  transform: translateY(10%);
+  /* As visibility doesn't support transition, I added a short delay of 0.05s so the transition on opacity and transform is visible */
+  -webkit-transition: visibility 0.2s ease-in-out, opacity 0.25s ease-in-out,
+    -webkit-transform 0.25s ease-in-out;
+  transition: visibility 0.2s ease-in-out, opacity 0.25s ease-in-out,
+    -webkit-transform 0.25s ease-in-out;
+  -o-transition: visibility 0.2s ease-in-out, opacity 0.25s ease-in-out,
+    transform 0.25s ease-in-out;
+  transition: visibility 0.2s ease-in-out, opacity 0.25s ease-in-out,
+    transform 0.25s ease-in-out;
+  transition: visibility 0.2s ease-in-out, opacity 0.25s ease-in-out,
+    transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+}
+
+/* The 'dropdown-visible' class will be added dynamically using JavaScript */
+#flights-header #flights-search-form .persons-selection.dropdown-visible,
+#flights-header #flights-search-form .flight-class-selection.dropdown-visible {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
+#flights-header #flights-search-form .persons-selection {
+  /* 430px / 16px */
+  max-height: 26.875rem;
+}
+
+/* Style the 'Done' buttons for persons and flight class dropdown containers */
+#flights-header #flights-search-form .selection-done-btn {
+  background-color: var(--flights-primary);
+  -webkit-transition: background-color 0.25s linear;
+  -o-transition: background-color 0.25s linear;
+  transition: background-color 0.25s linear;
+}
+
+#flights-header #flights-search-form .selection-done-btn:hover {
+  background-color: var(--flights-secondary);
+}
+
+#flights-header #flights-search-form .persons-selection {
+  width: 35%;
+  gap: 1.4rem;
+  left: 0;
+}
+
+#flights-header #flights-search-form .flight-class-selection {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  gap: 1rem;
+}
+
+#flights-header #flights-search-form .flight-class-selection .flight-class-btn {
+  color: var(--flights-secondary);
+}
+/* The 'selected' class will be added dynamically using JavaScript */
+#flights-header
+  #flights-search-form
+  .flight-class-selection
+  .flight-class-btn.selected {
+  outline: 2px solid var(--flights-primary);
+}
+
+#flights-header
+  #flights-search-form
+  .flight-class-selection
+  .flight-class-btn:hover {
+  background-color: var(--color-gray-light);
+}
+
+#flights-header #flights-search-form .selection-number {
+  gap: 1rem;
+}
+
+#flights-header #flights-search-form .selection-decrease-btn,
+#flights-header #flights-search-form .selection-increase-btn {
+  height: 100%;
+  width: 3rem;
+  color: var(--flights-primary);
+}
+
+#flights-header #flights-search-form .selection-decrease-btn:hover,
+#flights-header #flights-search-form .selection-increase-btn:hover {
+  background-color: var(--color-gray-light);
+}
+/* Set the cursor to 'not-allowed' when the button is disabled */
+#flights-header #flights-search-form .selection-decrease-btn:disabled,
+#flights-header #flights-search-form .selection-increase-btn:disabled {
+  cursor: not-allowed;
+}
+
+#flights-header #flights-search-form .dropdown-btn {
+  -webkit-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  color: var(--color-white);
+  letter-spacing: 1.1px;
+}
+
+#flights-header #flights-search-form .dropdown-btn:hover {
+  color: var(--flights-primary);
+  background-color: var(--color-white);
+}
+
+#flights-header #flights-search-form .inputs-container {
+  display: -ms-grid;
+  display: grid;
+  /* Arrange the grid template areas for desktop and tablet sizes */
+  grid-template-areas: "locations locations date date search";
+  gap: 1.2rem;
+}
+
+#flights-header #flights-search-form .location-inputs-wrapper {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: locations;
+}
+#flights-header #flights-search-form .dates-wrapper {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+  -ms-grid-column-span: 3;
+  grid-area: date;
+}
+
+/* Search results dropdown containers styling */
+#flights-header #flights-search-form .departure-location-results,
+#flights-header #flights-search-form .arrival-location-results {
+  display: none;
+  top: calc(100% + 10px);
+  width: 100%;
+  background-color: var(--color-white);
+  -webkit-box-shadow: var(--box-shadow-dark);
+  box-shadow: var(--box-shadow-dark);
+  /* 375px / 16 */
+  max-height: 23.4375rem;
+}
+#flights-header #flights-search-form .departure-location-results.visible,
+#flights-header #flights-search-form .arrival-location-results.visible {
+  display: block;
+}
+
+#flights-header #flights-search-form .departure-location-results h2,
+#flights-header #flights-search-form .arrival-location-results h2 {
+  color: var(--flights-primary);
+}
+#flights-header #flights-search-form .departure-location-city:visited,
+#flights-header #flights-search-form .departure-location-city:link,
+#flights-header #flights-search-form .arrival-location-city:visited,
+#flights-header #flights-search-form .arrival-location-city:link {
+  gap: 1rem;
+  color: var(--color-dark-2);
+}
+#flights-header #flights-search-form .departure-location-city:hover,
+#flights-header #flights-search-form .departure-location-city:active,
+#flights-header #flights-search-form .arrival-location-city:hover,
+#flights-header #flights-search-form .arrival-location-city:active {
+  background-color: var(--color-gray-light);
+}
+#flights-header #flights-search-form .departure-location-city .city-image,
+#flights-header #flights-search-form .arrival-location-city .city-image {
+  max-height: 4.4rem;
+  max-width: 4.4rem;
+}
+#flights-header #flights-search-form .result-list-item a:link,
+#flights-header #flights-search-form .result-list-item a:visited {
+  color: var(--color-dark-2);
+  gap: 1rem;
+}
+#flights-header #flights-search-form .result-list-item a:hover,
+#flights-header #flights-search-form .result-list-item a:active {
+  background-color: var(--color-gray-light);
+}
+#flights-header #flights-search-form .result-list-item .result-icon {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+/* Style the search button */
+#flights-header #flights-search-form .inputs-container .search-button {
+  -ms-grid-row: 1;
+  -ms-grid-column: 9;
+  grid-area: search;
+  height: 3rem;
+  gap: 0.15rem;
+  background-color: var(--color-highlight);
+  color: var(--color-white);
+  -webkit-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  -webkit-box-shadow: var(--box-shadow-dark);
+  box-shadow: var(--box-shadow-dark);
+  /* As the href attribute value will be dynamically added using JavaScript, I had to add the cursor: pointer property for a proper UX */
+  cursor: pointer;
+}
+
+#flights-header #flights-search-form .inputs-container .search-button:hover,
+#flights-header #flights-search-form .inputs-container .search-button:active {
+  background-color: var(--color-white);
+  color: var(--color-highlight);
+}
+
+#flights-header #flights-search-form .departure-location-wrapper,
+#flights-header #flights-search-form .arrival-location-wrapper,
+#flights-header #flights-search-form .departure-date-wrapper,
+#flights-header #flights-search-form .return-date-wrapper {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 50%;
+  flex: 0 1 50%;
+}
+
+/* Style each input wrapper to ensure the icon fits beside the input and display a smooth visual appearance */
+#flights-header #flights-search-form .input-wrapper {
+  background-color: var(--color-gray-light);
+  min-height: 3rem;
+  gap: 0.8rem;
+  -webkit-box-shadow: var(--box-shadow-dark);
+  box-shadow: var(--box-shadow-dark);
+}
+
+#flights-header #flights-search-form .input-wrapper i {
+  color: var(--flights-secondary);
+  width: 1.3rem;
+}
+
+#flights-header #flights-search-form .input-wrapper input {
+  background-color: transparent;
+  color: var(--color-dark-2);
+}
+
+#flights-header #flights-search-form .input-wrapper input:disabled {
+  color: var(--color-gray-dark);
+}
+
+#flights-header #flights-search-form .input-wrapper input:focus {
+  outline: none;
+}
+
+#flights-header
+  #flights-search-form
+  .input-wrapper
+  input::-webkit-input-placeholder {
+  color: var(--flights-secondary);
+  font-size: 0.9rem;
+}
+
+#flights-header #flights-search-form .input-wrapper input::-moz-placeholder {
+  color: var(--flights-secondary);
+  font-size: 0.9rem;
+}
+
+#flights-header
+  #flights-search-form
+  .input-wrapper
+  input:-ms-input-placeholder {
+  color: var(--flights-secondary);
+  font-size: 0.9rem;
+}
+
+#flights-header
+  #flights-search-form
+  .input-wrapper
+  input::-ms-input-placeholder {
+  color: var(--flights-secondary);
+  font-size: 0.9rem;
+}
+
+#flights-header #flights-search-form .input-wrapper input::placeholder {
+  color: var(--flights-secondary);
+  font-size: 0.9rem;
+}
+
+#flights-header #flights-search-form .input-wrapper .clear-input-btn {
+  border: none;
+  right: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--border-rounded);
+  background-color: var(--color-red-light);
+}
+
+#flights-header #flights-search-form .input-wrapper .clear-input-btn i {
+  color: var(--color-white);
+}
+
+/* Style the locations reverse button */
+#flights-header #flights-search-form .input-wrapper .locations-reverse-button {
+  height: 2rem;
+  width: 2rem;
+  border-radius: var(--border-rounded);
+  right: 0;
+  -webkit-transform: translate(50%);
+  -ms-transform: translate(50%);
+  transform: translate(50%);
+  -webkit-transition: background-color 0.25s linear;
+  -o-transition: background-color 0.25s linear;
+  transition: background-color 0.25s linear;
+}
+
+#flights-header
+  #flights-search-form
+  .input-wrapper
+  .locations-reverse-button:hover {
+  background-color: var(--color-white);
+}
+
+/* Style the flights results header */
+#flights-results-header {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--flights-primary)),
+    to(var(--flights-secondary))
+  );
+  background-image: -o-linear-gradient(
+    top,
+    var(--flights-primary),
+    var(--flights-secondary)
+  );
+  background-image: linear-gradient(
+    to bottom,
+    var(--flights-primary),
+    var(--flights-secondary)
+  );
+}
+
+/* ========== */
+/* Main */
+/* ========== */
+main #introduction-section h1,
+main #introduction-section h2,
+main #best-destinations-section h1,
+main #seasonal-destination-section h1,
+main #seasonal-destination-section .card h2 {
+  color: var(--flights-primary);
+}
+
+/* Style the introduction cards */
+main #introduction-section .card,
+main #best-destinations-section .card,
+main #seasonal-destination-section .card {
+  -webkit-box-shadow: var(--box-shadow-light);
+  box-shadow: var(--box-shadow-light);
+}
+
+main #introduction-section .card .card-text {
+  color: var(--flights-secondary);
+}
+
+/* Style the feature links container */
+main #best-destinations-section .card .destinations-features-links {
+  width: 70%;
+  gap: 1rem;
+  right: 0;
+  bottom: 15%;
+  background-color: var(--color-hightlight-transparent);
+}
+
+/* Style the feature links for each best detinations card (flights, stays, car rentals, attractions) */
+main #best-destinations-section .card .destinations-features-links a {
+  -webkit-transition: color 0.25s linear;
+  -o-transition: color 0.25s linear;
+  transition: color 0.25s linear;
+}
+main #best-destinations-section .card .destinations-features-links a:visited,
+main #best-destinations-section .card .destinations-features-links a:link {
+  color: var(--color-white);
+}
+main #best-destinations-section .card .destinations-features-links a:hover,
+main #best-destinations-section .card .destinations-features-links a:active {
+  color: var(--flights-primary);
+}
+
+/* Style the seasonal destination section */
+main #seasonal-destination-section .card img {
+  max-height: 24rem;
+}
+
+main #seasonal-destination-section .card .card-body > * {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 50%;
+  flex: 1 1 50%;
+}
+
+main #seasonal-destination-section .card .card-body p {
+  color: var(--flights-secondary);
+}
+
+main #seasonal-destination-section .card .book-btn:link,
+main #seasonal-destination-section .card .book-btn:visited {
+  border: 3px solid var(--color-highlight);
+  color: var(--color-highlight);
+}
+main #seasonal-destination-section .card .book-btn:hover,
+main #seasonal-destination-section .card .book-btn:active {
+  background-color: var(--color-highlight);
+  color: var(--color-white);
+}
+
+/* =================================================================== */
+/* flights-results.html styling */
+/* =================================================================== */
+
+#flights-results-header .header-main-content {
+  background-color: var(--color-gray-light);
+}
+
+#flights-results-header .header-main-content .results-list {
+  width: 80%;
+}
+
+#flights-results-header .sort-btns {
+  min-height: 4rem;
+  border: 1px solid var(--color-dark-2);
+}
+
+#flights-results-header .sort-btns button {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 33.33333333333%;
+  flex: 1 1 33.33333333333%;
+  border: none;
+  -ms-flex-item-align: stretch;
+  -ms-grid-row-align: stretch;
+  align-self: stretch;
+  -webkit-transition: background-color 0.25s linear;
+  -o-transition: background-color 0.25s linear;
+  transition: background-color 0.25s linear;
+  color: var(--flights-primary);
+}
+
+#flights-results-header .sort-btns button.active {
+  border-bottom: 2px solid var(--flights-primary);
+}
+
+#flights-results-header .sort-btns button:active,
+#flights-results-header .sort-btns button:hover {
+  background-color: var(--color-gray);
+}
+
+#flights-results-header .flights-search-results .flight-details {
+  -webkit-column-gap: 0.6rem;
+  -moz-column-gap: 0.6rem;
+  column-gap: 0.6rem;
+}
+
+#flights-results-header .flights-search-results .airline-icon {
+  height: 1.8rem;
+  gap: 0.3rem;
+}
+
+#flights-results-header .flights-search-results .airline-content {
+  gap: 1rem;
+}
+
+#flights-results-header .flights-search-results .flight-class {
+  display: inline-block;
+  background-color: var(--color-green);
+}
+
+#flights-results-header .flights-search-results .flight-hours {
+  gap: 2.8rem;
+}
+
+#flights-results-header .flights-search-results .flight-hours .line {
+  border-top: 3px dotted var(--color-dark-2);
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  min-width: 3rem;
+}
+
+#flights-results-header .flights-search-results .flight-destinations {
+  color: var(--color-gray-dark);
+}
+
+/* Style the 'Save' and the 'View Details' buttons */
+#flights-results-header .flights-search-results .flight-item-btns > * {
+  border: none;
+  -webkit-transition: background-color 0.25s linear;
+  -o-transition: background-color 0.25s linear;
+  transition: background-color 0.25s linear;
+}
+
+#flights-results-header .flight-item-btns .save-btn {
+  background-color: var(--color-red);
+}
+
+#flights-results-header .flight-item-btns .view-details-btn {
+  background-color: var(--flights-primary);
+}
+
+#flights-results-header .flight-item-btns .save-btn:active,
+#flights-results-header .flight-item-btns .save-btn:hover {
+  background-color: var(--color-red-light);
+}
+
+#flights-results-header .flight-item-btns .view-details-btn:active,
+#flights-results-header .flight-item-btns .view-details-btn:hover {
+  background-color: var(--flights-secondary);
+}
+
+/* ============ */
+/* Footer */
+/* ============ */
+
+/* Set the basic styling for the footer container */
+footer {
+  background-color: var(--flights-secondary);
+  margin-top: 8rem;
+}
+
+/* Quick links and social media links styling */
+footer .quick-links a,
+footer .social-media-links a {
+  -webkit-transition: color 0.25s linear;
+  -o-transition: color 0.25s linear;
+  transition: color 0.25s linear;
+}
+
+footer .social-media-links {
+  gap: 1rem;
+}
+
+footer .quick-links a:link,
+footer .quick-links a:visited,
+footer .social-media-links a:link,
+footer .social-media-links a:visited {
+  color: var(--color-white);
+}
+footer .quick-links a:hover,
+footer .quick-links a:active,
+footer .social-media-links a:hover,
+footer .social-media-links a:active {
+  color: var(--color-gray);
+}
+
+/* =================================================== */
+/* booking-confirmation.html */
+/* =================================================== */
+#booking-confirmation-header {
+  min-height: 100vh;
+  background-image: var(--darkening-bg-image-2),
+    url("./images/booking-confirmation-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#booking-confirmation-header a {
+  background-color: var(--flights-secondary);
+}
+
+#booking-confirmation-header a:active,
+#booking-confirmation-header a:hover {
+  background-color: var(--color-blue-light);
+}
+
+/* ============= */
+/* Dialogs */
+/* ============= */
+
+/* Flight Details Dialog and Form Submission Dialog */
+.details-dialog,
+.form-submission-dialog {
+  top: 50%;
+  left: 50%;
+  min-width: 70%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border: none;
+}
+
+.details-dialog::-webkit-backdrop,
+.form-submission-dialog::-webkit-backdrop {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.details-dialog::backdrop,
+.form-submission-dialog::backdrop {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.close-dialog-btn {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--color-white);
+  background-color: var(--color-red);
+  border-radius: var(--border-rounded);
+  border: none;
+  right: 1rem;
+  top: 1rem;
+}
+
+.details-dialog .flight-details {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas:
+    "departure airline"
+    "arrival airline";
+  -webkit-column-gap: 2rem;
+  -moz-column-gap: 2rem;
+  column-gap: 2rem;
+}
+
+.details-dialog .flight-details .departure-details {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: departure;
+}
+.details-dialog .flight-details .arrival-details {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: arrival;
+}
+.details-dialog .flight-details .airline-details {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  grid-area: airline;
+  gap: 1rem;
+}
+
+.details-dialog .flight-details .airline-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.details-dialog .flight-summary-dialog p,
+.details-dialog .dialog-layover,
+.details-dialog .included-features p {
+  color: var(--color-gray-dark-2);
+}
+
+.details-dialog .included-features,
+.details-dialog .included-features main li {
+  gap: 1.6rem;
+}
+
+.details-dialog .included-features main {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.details-dialog .included-features main li .badge {
+  background-color: var(--color-green);
+}
+
+.details-dialog .price-container {
+  background-color: var(--color-white);
+}
+
+.details-dialog .price-container .dialog-select-btn {
+  background-color: var(--flights-primary);
+  border: none;
+  min-width: 5rem;
+  -webkit-transition: background-color 0.25s linear;
+  -o-transition: background-color 0.25s linear;
+  transition: background-color 0.25s linear;
+}
+
+.details-dialog .price-container .dialog-select-btn:active,
+.details-dialog .price-container .dialog-select-btn:hover {
+  background-color: var(--flights-secondary);
+}
+
+/* Form Submission Dialog */
+.form-submission-dialog textarea {
+  resize: none;
+}
+
+.form-submission-dialog button[type="submit"] {
+  background-color: var(--flights-primary);
+  color: var(--color-white);
+  -webkit-transition: background-color 0.25s linear;
+  -o-transition: background-color 0.25s linear;
+  transition: background-color 0.25s linear;
+}
+
+.form-submission-dialog button[type="submit"]:hover {
+  background-color: var(--flights-secondary);
+}
+
+/* =================== */
+/* Media Queries */
+/* =================== */
+
+/* Extra-extra-large screen sizes */
+@media only screen and (max-width: 1400px) {
+  #flights-header #flights-search-form .inputs-container {
+    gap: 0.8rem;
+  }
+}
+
+/* Extra-large screen sizes */
+@media only screen and (max-width: 1200px) {
+  header #nav .logo-container {
+    max-width: 14rem;
+  }
+
+  #flights-header #flights-search-form .inputs-container {
+    /* Re-arrange the grid template areas for small extra-large screen sizes */
+    grid-template-areas:
+      "locations locations locations locations"
+      "date date date date"
+      ". search search .";
+    grid-auto-columns: 1fr;
+    gap: 1rem;
+  }
+
+  #flights-header #flights-search-form .inputs-container .search-button {
+    margin-top: 0.8rem;
+  }
+
+  #flights-results-header .header-main-content .results-list {
+    width: 100%;
+  }
+
+  #flights-header #flights-search-form .location-inputs-wrapper {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 7;
+  }
+
+  #flights-header #flights-search-form .dates-wrapper {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 7;
+  }
+
+  #flights-header #flights-search-form .inputs-container .search-button {
+    -ms-grid-row: 5;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 3;
+  }
+}
+
+/* Large screen sizes */
+@media only screen and (max-width: 992px) {
+  header #nav .logo-container {
+    max-width: 12rem;
+  }
+
+  #flights-header #flights-search-form .persons-selection {
+    width: 50%;
+  }
+
+  .details-dialog {
+    min-width: 90%;
+  }
+
+  .details-dialog .close-dialog-btn {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+/* Medium screen sizes */
+@media only screen and (max-width: 768px) {
+  #flights-header #flights-search-form .inputs-container {
+    /* Re-arrange the grid template areas for small screen sizes */
+    grid-template-areas:
+      "locations"
+      "date"
+      "search";
+    gap: 1rem;
+  }
+
+  #flights-header #flights-search-form .persons-selection {
+    width: 80%;
+  }
+
+  #flights-results-header .flights-search-results .flight-item-btns {
+    gap: 0.8rem;
+  }
+
+  #flights-results-header .flights-search-results .flight-item-btns > * {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+  }
+
+  #flights-results-header .flight-item-btns .view-details-btn {
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+  }
+
+  #flights-results-header .flight-item-btns .save-btn {
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+  }
+
+  .details-dialog .flight-details {
+    grid-template-areas:
+      "departure"
+      "arrival"
+      "airline";
+  }
+
+  .details-dialog .flight-details .airline-details {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+
+  .details-dialog .included-features,
+  .details-dialog .included-features main li {
+    gap: 0.7rem;
+  }
+  #flights-header #flights-search-form .location-inputs-wrapper {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+  }
+  #flights-header #flights-search-form .dates-wrapper {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+  }
+  #flights-header #flights-search-form .inputs-container .search-button {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+  }
+
+  .details-dialog .flight-details .departure-details {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+
+  .details-dialog .flight-details .arrival-details {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
+
+  .details-dialog .flight-details .airline-details {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+  }
+}
+
+/* Small screen sizes */
+@media only screen and (max-width: 576px) {
+  .sidebar-navigation {
+    min-width: 100%;
+  }
+
+  .overlay {
+    display: none;
+  }
+
+  /* Change the background image for small screen sizes */
+  #flights-header {
+    background-image: var(--darkening-bg-image),
+      url("../assets/images/background-image-flights-small.jpg");
+  }
+
+  /* Change the size of the image */
+  header #nav .logo-container img {
+    height: 2rem;
+  }
+
+  #flights-header #flights-search-form .dropdown-inputs-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  #flights-header #flights-search-form .persons-selection,
+  #flights-header #flights-search-form .flight-class-selection {
+    width: 100%;
+  }
+
+  #flights-header #flights-search-form .selection-number {
+    gap: 0.75rem;
+  }
+
+  #flights-header #flights-search-form .input-wrapper {
+    min-height: 2.6rem;
+    border-radius: 0.5rem;
+  }
+
+  #flights-header #flights-search-form .input-wrapper .clear-input-btn {
+    right: 3.2rem;
+  }
+
+  #flights-header #flights-search-form .location-inputs-wrapper,
+  #flights-header #flights-search-form .dates-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  /* Change the search results images for cities */
+  #flights-header #flights-search-form .departure-location-city .city-image,
+  #flights-header #flights-search-form .arrival-location-city .city-image {
+    max-width: 4rem;
+    max-height: 4rem;
+  }
+
+  #flights-header #flights-search-form .result-list-item .result-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  #flights-header
+    #flights-search-form
+    .input-wrapper
+    .locations-reverse-button {
+    right: 0.8rem;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+
+  #flights-results-header .sort-btns {
+    min-height: 3.4rem;
+  }
+
+  #flights-results-header .flights-search-results .flight-hours {
+    gap: 0.5rem;
+  }
+
+  #flights-results-header .flight-destinations .flight-location-code,
+  #flights-results-header .flight-destinations .flight-duration {
+    font-size: 0.8rem;
+  }
+
+  /* Increase the size of the dialogs for small screen sizes */
+  .details-dialog,
+  .form-submission-dialog {
+    min-width: 95%;
+  }
+}

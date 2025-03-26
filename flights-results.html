@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Florin-Ionut Miron" />
+    <meta
+      name="keywords"
+      content="flight tickets, cheap flights, airline tickets, flight deals, book flights, flight booking, best flight prices, flight search, flight reservations"
+    />
+    <meta
+      name="description"
+      content="Find the best deals on flight tickets with our easy-to-use platform. Choose from a wide range of airlines and book your next trip with confidence."
+    />
+    <title>JetSetGo</title>
+    <!-- Favicons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+      href="./assets/images/favicon-16x16.png"
+    />
+    <!-- Bootstrap Compiled CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- CDN Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body class="position-relative">
+    <!-- Overlay -->
+    <div class="overlay position-absolute z-3"></div>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar-navigation position-fixed px-4 py-3 z-3">
+      <ul class="list-unstyled d-flex flex-column justify-content-start">
+        <li class="mb-2 fs-6">
+          <a
+            href="index.html"
+            class="d-flex align-items-center py-2 px-4 text-decoration-none rounded-3"
+            ><i class="fa-solid fa-plane"></i> Flights</a
+          >
+        </li>
+        <li class="mb-2 fs-6">
+          <a
+            href="#"
+            class="d-flex align-items-center py-2 px-4 text-decoration-none rounded-3"
+            ><i class="fa-solid fa-hotel"></i> Stays</a
+          >
+        </li>
+        <li class="mb-2 fs-6">
+          <a
+            href="#"
+            class="d-flex align-items-center py-2 px-4 text-decoration-none rounded-3"
+            ><i class="fa-solid fa-car"></i> Car Rentals</a
+          >
+        </li>
+        <li class="mb-2 fs-6">
+          <a
+            href="#"
+            class="d-flex align-items-center py-2 px-4 text-decoration-none rounded-3"
+            ><i class="fa-solid fa-building-columns"></i> Attractions</a
+          >
+        </li>
+        <li class="mb-2 fs-6">
+          <a
+            href="#"
+            class="d-flex align-items-center py-2 px-4 text-decoration-none rounded-3"
+            ><i class="fa-solid fa-globe"></i> Explore</a
+          >
+        </li>
+        <li class="mb-2 fs-6">
+          <a
+            href="#"
+            class="d-flex align-items-center py-2 px-4 text-decoration-none rounded-3"
+            ><i class="fa-solid fa-circle-question"></i> About</a
+          >
+        </li>
+        <li class="mb-2 fs-6">
+          <a
+            href="#"
+            class="d-flex align-items-center py-2 px-4 text-decoration-none rounded-3"
+            ><i class="fa-solid fa-phone"></i> Contact</a
+          >
+        </li>
+        <li class="mb-2 fs-6">
+          <a
+            href="#"
+            class="d-flex align-items-center py-2 px-4 text-decoration-none rounded-3"
+            ><i class="fa-solid fa-book"></i> Language</a
+          >
+        </li>
+        <li class="mb-2 fs-6">
+          <a
+            href="#"
+            class="d-flex align-items-center py-2 px-4 text-decoration-none rounded-3"
+            ><i class="fa-solid fa-sterling-sign"></i> Currency</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <!-- Header -->
+    <header id="flights-results-header" class="header pb-0">
+      <!-- Navbar -->
+      <nav id="nav" class="position-fixed top-0 w-100 z-3">
+        <div
+          class="container d-flex align-items-center justify-content-between px-3 py-3 ps-sm-0"
+        >
+          <!-- Left Navigation -->
+          <div class="left-navigation d-flex align-items-center">
+            <!-- Hamburger Button -->
+            <button
+              id="hamburger-btn"
+              class="hamburger-btn nav-btn align-self-center fs-2 text-white rounded rounded-3 focus-ring"
+              aria-label="Navigation hamburger button"
+            >
+              <i class="fa-solid fa-bars p-0 p-sm-3"></i>
+            </button>
+            <!-- Logo -->
+            <div class="logo-container">
+              <a href="#" class="w-100 h-100">
+                <picture>
+                  <source
+                    media="(max-width: 576px)"
+                    srcset="./assets/images/logo-mobile-resized.png"
+                  />
+                  <img
+                    src="./assets/images/logo.png"
+                    alt="Chris standing up holding his daughter Elva"
+                    class="w-100 h-sm-100"
+                  />
+                </picture>
+              </a>
+            </div>
+          </div>
+          <!-- Right Navigation -->
+          <div class="right-navigation">
+            <ul class="d-flex align-items-center list-unstyled m-0 fs-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-white"
+                  title="My Bookings"
+                  aria-label="My Bookings"
+                  ><i class="fa-solid fa-bookmark"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white"
+                  title="Favourites"
+                  aria-label="Favourites"
+                  ><i class="fa-solid fa-heart"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-main-content py-5">
+        <div
+          class="results-container container d-flex flex-column align-items-center justify-content-center"
+        >
+          <!-- Results List -->
+          <div class="results-list">
+            <!-- Sort Buttons -->
+            <div class="sort-btns d-flex w-100 rounded-3 overflow-hidden">
+              <button class="sort-btn active fw-bold" data-sort="BEST">
+                Best
+              </button>
+              <button class="sort-btn fw-bold" data-sort="CHEAPEST">
+                Cheapest
+              </button>
+              <button class="sort-btn fw-bold" data-sort="FASTEST">
+                Fastest
+              </button>
+            </div>
+            <!-- Search Results -->
+            <div class="flights-search-results mt-3">
+              <!-- Flight Item -->
+              <div class="flight-item px-2 px-md-4 py-3 border rounded-3"></div>
+            </div>
+          </div>
+          <div
+            class="loader-container intersection-observer-loader d-none flex-column align-items-center justify-content-center mt-1"
+          >
+            <div class="loader"></div>
+            <p class="mt-2">Searching for more flights offers...</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dialogs -->
+    <!-- Flight Details Dialog -->
+    <dialog
+      class="details-dialog position-fixed max-h-100 rounded-3 p-3 z-3 overflow-auto"
+    >
+      <!-- Close Dialog Button -->
+      <button class="close-dialog-btn position-absolute focus-ring">
+        <i class="fa-solid fa-xmark fw-bold"></i>
+      </button>
+      <!-- Header -->
+      <header>
+        <h1 class="fw-bold fs-2 mb-4">Flight Details</h1>
+      </header>
+
+      <!-- Main -->
+      <div class="details-content-wrapper"></div>
+    </dialog>
+
+    <!-- Flight Selection Submission Form Dialog -->
+    <dialog
+      class="form-submission-dialog position-fixed rounded-3 pt-5 pb-3 px-3 z-3"
+    >
+      <!-- Close Dialog Button -->
+      <button class="close-dialog-btn position-absolute focus-ring">
+        <i class="fa-solid fa-xmark fw-bold"></i>
+      </button>
+      <form action="booking-confirmation.html">
+        <div class="row">
+          <!-- First Name Input -->
+          <div class="col-12 col-md-6">
+            <div class="mb-3">
+              <!-- The regex value of the pattern attribute makes sure the user doesn't introduce numbers -->
+              <label for="fname" class="form-label">First Name</label>
+              <input
+                type="text"
+                id="fname"
+                class="form-control"
+                name="fname"
+                pattern="^[A-Za-z\s]+$"
+                placeholder="Enter your first name"
+                required
+              />
+            </div>
+          </div>
+          <!-- Last Name Input -->
+          <div class="col-12 col-md-6">
+            <div class="mb-3">
+              <!-- The regex value of the pattern attribute makes sure the user doesn't introduce numbers -->
+              <label for="lname" class="form-label">Last Name</label>
+              <input
+                type="text"
+                id="lname"
+                class="form-control"
+                name="lname"
+                pattern="^[A-Za-z\s]+$"
+                placeholder="Enter your Last name"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <!-- Email Input -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="YourEmailAddress@mail.com"
+                required
+              />
+            </div>
+          </div>
+          <!-- Phone Number Input -->
+          <div class="col-12 col-md-6">
+            <div class="mb-3">
+              <!-- The regex value of the pattern attribute will accept international phone number format -->
+              <label for="phone" class="form-label">Phone Number</label>
+              <input
+                type="text"
+                class="form-control card-number"
+                id="phone"
+                placeholder="+1 555-555-5555"
+                pattern="^(\+?(\d{1,4}))\s?(\d{1,15})$"
+                required
+              />
+            </div>
+          </div>
+          <!-- Card Number -->
+          <div class="col-12 col-md-9">
+            <div class="mb-3">
+              <!-- The regex value of the pattern attribute will not allow users to introduce letters -->
+              <label for="card" class="form-label">Card Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="card"
+                name="card"
+                pattern="^\d+$"
+                placeholder="0000 0000 0000 0000"
+                maxlength="16"
+                required
+              />
+            </div>
+          </div>
+          <!-- Card CVV -->
+          <div class="col-12 col-md-3">
+            <div class="mb-3">
+              <!-- The regex value of the pattern attribute will not allow users to introduce letters -->
+              <label for="cardCVV" class="form-label">Card CVV</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cardCVV"
+                name="cardCVV"
+                pattern="^\d+$"
+                maxlength="3"
+                placeholder="333"
+                required
+              />
+            </div>
+          </div>
+          <!-- Additional Requests -->
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="message" class="form-label"
+                >Additional Requests (Optional)</label
+              >
+              <textarea
+                name="message"
+                class="form-control"
+                id="message"
+                placeholder="Enter your message here"
+                rows="10"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <!-- Submit Button -->
+        <div class="text-end mb-1">
+          <button type="submit" class="btn px-4 py-2 fs-5 fs-bold">
+            Submit
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Bootstrap Compiled Javascript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Script JS -->
+    <script type="module" src="./js/flightResultsController.js"></script>
+  </body>
+</html>
